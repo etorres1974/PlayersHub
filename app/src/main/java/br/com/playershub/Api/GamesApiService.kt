@@ -1,10 +1,11 @@
 package br.com.playershub.Api
 
+import br.com.playershub.Api.entity.PlatformResponse
 import retrofit2.Response
 import retrofit2.http.GET
 
 interface GamesApiService {
 
-    @GET("games")
-    suspend fun listPlatforms() : Response<Any>
+    @GET("platforms")
+    suspend fun listPlatforms() : Response<PlatformResponse>
 }

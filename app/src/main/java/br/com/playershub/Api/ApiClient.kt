@@ -1,29 +1,16 @@
 package br.com.playershub.Api
 
-import kotlinx.coroutines.coroutineScope
-
+import br.com.playershub.Api.entity.PlatformResponse
 
 class ApiClient {
 
-    suspend fun listPlatforms(): Any? {
-        return makeRequest { gamesApi.listPlatforms() }
+    suspend fun listPlatforms(): PlatformResponse? {
+        return  gamesApi.listPlatforms().body()
     }
 
     companion object {
         private const val API_BASE_URL = "https://rawg-video-games-database.p.rapidapi.com/"
         private val gamesApi = ApiUtilsProvider.retrofit(API_BASE_URL, GamesApiService::class.java)
 
-    }
-
-   suspend fun <T> makeRequest(block: suspend () -> retrofit2.Response<T>): T? {
-        return coroutineScope {
-            try {
-                block().run {
-                    body()
-                }
-            } catch (t: Exception) {
-                throw t
-            }
-        }
     }
 }
