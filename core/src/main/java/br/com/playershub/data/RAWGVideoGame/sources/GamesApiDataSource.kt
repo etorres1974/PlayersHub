@@ -12,4 +12,49 @@ interface GamesApiDataSource {
 
     @GET("platforms")
     suspend fun detailPlatform(@Query("id") id: Int): Response<ApiPlatform>
+
+    @GET("genres")
+    suspend fun listGenres(): Response<Any>
+
+    @GET("genres")
+    suspend fun detailGenres(@Query("id") id: Int): Response<Any>
+
+    @GET("games")
+    suspend fun listGames(): Response<Any>
+
+    @GET("games")
+    suspend fun detailGame(@Query("id") id: Int): Response<Any>
+
+    @GET("publishers")
+    suspend fun listPublishers(): Response<Any>
+
+    @GET("publishers")
+    suspend fun detailPublisher(@Query("id") id: Int): Response<Any>
+
+    @GET("stores")
+    suspend fun listStores(): Response<Any>
+
+    @GET("stores")
+    suspend fun detailStore(@Query("id") id: Int): Response<Any>
+
+    @GET("tags")
+    suspend fun listTags(): Response<Any>
+
+    @GET("tags")
+    suspend fun detailTag(@Query("id") id: Int): Response<Any>
+
+    @GET("developers")
+    suspend fun listDevelopers(): Response<Any>
+
+    @GET("developers")
+    suspend fun detailDeveloper(@Query("id") id: Int): Response<Any>
+
+    @GET("creators")
+    suspend fun listCreators(): Response<Any>
+
+    @GET("creators")
+    suspend fun detailCreator(@Query("id") id: Int): Response<Any>
+
+    @GET("creators-roles")
+    suspend fun listCreatorRoles(): Response<Any>
 }
