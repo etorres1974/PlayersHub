@@ -9,10 +9,10 @@ import kotlinx.coroutines.launch
 
 class ViewModel : ViewModel() {
 
-    val platform : LiveData<Any> get() = _platforms
-    private val _platforms : MutableLiveData<Any> by lazy { MutableLiveData<Any>() }
+    val platform: LiveData<Any> get() = _platforms
+    private val _platforms: MutableLiveData<Any> by lazy { MutableLiveData<Any>() }
 
-    fun listPlatforms(){
+    fun listPlatforms() {
         viewModelScope.launch {
             _platforms.value = ApiClient().listPlatforms()
         }

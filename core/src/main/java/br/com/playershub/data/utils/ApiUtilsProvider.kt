@@ -1,5 +1,6 @@
-package br.com.playershub.data
+package br.com.playershub.data.utils
 
+import br.com.playershub.data.AuthInterceptor
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,14 +11,14 @@ object ApiUtilsProvider {
     private val authInterceptor = AuthInterceptor()
     private val logInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    fun httpClient(): OkHttpClient {
+    private fun httpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
             .addInterceptor(logInterceptor)
             .build()
     }
 
-    fun converterFactory(): GsonConverterFactory {
+    private fun converterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create(Gson())
     }
 
