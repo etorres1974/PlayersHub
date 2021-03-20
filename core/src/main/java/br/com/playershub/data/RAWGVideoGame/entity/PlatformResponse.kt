@@ -1,4 +1,4 @@
-package br.com.playershub.data.entity
+package br.com.playershub.data.RAWGVideoGame.entity
 
 
 import com.google.gson.annotations.SerializedName

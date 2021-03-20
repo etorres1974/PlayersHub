@@ -14,7 +14,7 @@ class ViewModel : ViewModel() {
 
     fun listPlatforms() {
         viewModelScope.launch {
-            _platforms.value = ApiClient().listPlatforms()
+            _platforms.value = ApiClient().detailPlatform(1)
         }
     }
 }
