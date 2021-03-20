@@ -1,4 +1,4 @@
-package br.com.playershub.Api
+package br.com.playershub.data
 
 import okhttp3.Interceptor
 import okhttp3.Response

@@ -1,6 +1,6 @@
-package br.com.playershub.Api
+package br.com.playershub.data
 
-import br.com.playershub.Api.entity.PlatformResponse
+import br.com.playershub.data.entity.PlatformResponse
 import retrofit2.Response
 import retrofit2.http.GET
 

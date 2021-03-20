@@ -1,11 +1,10 @@
-package br.com.playershub.Api
+package br.com.playershub.data
 
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.reflect.KClass
 
 object ApiUtilsProvider {
     private val authInterceptor = AuthInterceptor()

@@ -6,10 +6,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
-import br.com.playershub.Api.ApiClient
-import kotlinx.coroutines.coroutineScope
 
 class MainActivity : AppCompatActivity() {
 

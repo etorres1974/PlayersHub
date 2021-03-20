@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.playershub.Api.ApiClient
+import br.com.playershub.data.ApiClient
 import kotlinx.coroutines.launch
 
 class ViewModel : ViewModel() {
