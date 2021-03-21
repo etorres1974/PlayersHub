@@ -20,6 +20,8 @@ class FirstFragment : Fragment() {
 
     private val viewModel: ViewModel by viewModels()
 
+    private lateinit var gameAdapter : GameAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,28 +33,29 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.listRawgGames()
         setupUi()
         subscribeUi()
+        viewModel.listRawgGames()
     }
-    fun subscribeUi(){
+    private fun subscribeUi(){
         with(viewModel){
-            games.observe(viewLifecycleOwner, ::loadAdapter)
+            games.observe(viewLifecycleOwner){ list -> gameAdapter.submitList(list)}
         }
     }
 
-    fun loadAdapter(list : List<Game>){
-        Log.d("List on First Frag ", list.toString())
-    }
-
-    fun setupUi(){
+    private fun setupUi(){
+        setupRecyclerView()
         with(binding){
             buttonFirst.setOnClickListener { navigate() }
-
         }
     }
 
-    fun navigate(){
+    private fun setupRecyclerView(){
+        gameAdapter = GameAdapter()
+        binding.recyclerViewGames.adapter = gameAdapter
+    }
+
+    private fun navigate(){
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
     }
 }

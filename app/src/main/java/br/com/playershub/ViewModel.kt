@@ -19,13 +19,13 @@ class ViewModel(
 
     fun listRawgGames(){
         viewModelScope.launch {
-            _games.postValue(getGames.list())
+            _games.value = getGames.list()
         }
     }
 
     fun listFreeGames() {
         viewModelScope.launch {
-            _games.postValue(getFreeGames.list())
+            _games.value = getFreeGames.list()
         }
     }
 }
