@@ -7,23 +7,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import br.com.playershub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: ViewModel
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
-
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            viewModel.listPlatforms()
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
 

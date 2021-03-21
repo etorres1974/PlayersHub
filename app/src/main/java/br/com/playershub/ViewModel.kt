@@ -17,9 +17,14 @@ class ViewModel(
     val games: LiveData<List<Game>> get() = _games
     private val _games: MutableLiveData<List<Game>> by lazy { MutableLiveData<List<Game>>() }
 
-    fun listPlatforms() {
+    fun listRawgGames(){
         viewModelScope.launch {
             _games.postValue(getGames.list())
+        }
+    }
+
+    fun listFreeGames() {
+        viewModelScope.launch {
             _games.postValue(getFreeGames.list())
         }
     }
