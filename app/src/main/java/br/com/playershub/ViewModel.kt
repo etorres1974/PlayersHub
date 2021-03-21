@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.playershub.data.ApiClient
+import br.com.playershub.data.RAWGVideoGame.clients.GamesPlatformClient
 import kotlinx.coroutines.launch
 
 class ViewModel : ViewModel() {
@@ -14,7 +14,7 @@ class ViewModel : ViewModel() {
 
     fun listPlatforms() {
         viewModelScope.launch {
-            _platforms.value = ApiClient().detailPlatform(1)
+            _platforms.value = GamesPlatformClient().listGames()
         }
     }
 }
