@@ -3,9 +3,6 @@ package br.com.playershub.domain.entity
 interface Game {
     val id: Int?
     val name: String?
-    val dominantColor: String?
-    val saturatedColor: String?
-    val backgroundImage: String?
     //val clip: ApiClip?,
     //val esrbRating: ApiEsrbRating?,
     //val genres: List<ApiGenre>?,

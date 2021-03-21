@@ -1,7 +1,7 @@
 package br.com.playershub.data.utils
 
-import br.com.playershub.data.RAWGVideoGame.interceptors.GameApiInterceptor
 import com.google.gson.Gson
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ object ApiUtilsProvider {
     private val logInterceptor =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    private fun httpClient(authInterceptor: GameApiInterceptor): OkHttpClient {
+    private fun httpClient(authInterceptor: Interceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
             .addInterceptor(logInterceptor)
@@ -25,7 +25,7 @@ object ApiUtilsProvider {
     fun <T> retrofit(
         apiBaseUrl: String,
         apiServiceInterface: Class<T>,
-        authInterceptor: GameApiInterceptor
+        authInterceptor: Interceptor
     ): T {
         return Retrofit.Builder()
             .client(httpClient(authInterceptor))

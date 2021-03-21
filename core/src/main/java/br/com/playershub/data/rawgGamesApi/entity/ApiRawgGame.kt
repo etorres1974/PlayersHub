@@ -1,20 +1,20 @@
-package br.com.playershub.data.RAWGVideoGame.entity
+package br.com.playershub.data.rawgGamesApi.entity
 
 
 import br.com.playershub.domain.entity.Game
 import com.google.gson.annotations.SerializedName
 
-data class ApiGame(
+data class ApiRawgGame(
     @SerializedName("added")
     val added: Int? = null,
     @SerializedName("added_by_status")
     val addedByStatus: AddedByStatus? = null,
     @SerializedName("background_image")
-    override val backgroundImage: String? = null,
+    val backgroundImage: String? = null,
     @SerializedName("clip")
     val clip: ApiClip? = null,
     @SerializedName("dominant_color")
-    override val dominantColor: String? = null,
+    val dominantColor: String? = null,
     @SerializedName("esrb_rating")
     val esrbRating: ApiEsrbRating? = null,
     @SerializedName("genres")
@@ -46,7 +46,7 @@ data class ApiGame(
     @SerializedName("reviews_text_count")
     val reviewsTextCount: Int? = null,
     @SerializedName("saturated_color")
-    override val saturatedColor: String? = null,
+    val saturatedColor: String? = null,
     @SerializedName("short_screenshots")
     val shortScreenshots: List<ApiShortScreenshot>? = null,
     @SerializedName("slug")

@@ -1,11 +1,9 @@
-package br.com.playershub.data.RAWGVideoGame.entity
+package br.com.playershub.data.rawgGamesApi.entity
 
 
 import com.google.gson.annotations.SerializedName
 
-data class ApiStore(
-    @SerializedName("domain")
-    val domain: String?,
+data class ApiPlatform(
     @SerializedName("games_count")
     val gamesCount: Int?,
     @SerializedName("id")
@@ -15,5 +13,9 @@ data class ApiStore(
     @SerializedName("name")
     val name: String?,
     @SerializedName("slug")
-    val slug: String?
+    val slug: String?,
+    @SerializedName("year_end")
+    val yearEnd: Int?,
+    @SerializedName("year_start")
+    val yearStart: Int?
 )

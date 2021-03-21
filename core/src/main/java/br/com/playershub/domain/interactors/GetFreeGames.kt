@@ -3,7 +3,7 @@ package br.com.playershub.domain.interactors
 import br.com.playershub.data.rawgGamesApi.FreeToPlayGameRepository
 import br.com.playershub.domain.boundary.GamesBoundary
 
-class GetGames(
+class GetFreeGames(
     private val repository: GamesBoundary = FreeToPlayGameRepository()
 ) {
     suspend fun list() = repository.listGames()

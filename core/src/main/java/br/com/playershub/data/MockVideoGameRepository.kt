@@ -1,10 +1,10 @@
-package br.com.playershub.data.RAWGVideoGame
+package br.com.playershub.data
 
-import br.com.playershub.data.RAWGVideoGame.entity.ApiGame
-import br.com.playershub.domain.boundary.RawgVideoGameBoundary
+import br.com.playershub.data.rawgGamesApi.entity.ApiRawgGame
+import br.com.playershub.domain.boundary.GamesBoundary
 import br.com.playershub.domain.entity.Game
 
-class MockVideoGameRepository : RawgVideoGameBoundary { //Todo Change it to some test Lib
+class MockVideoGameRepository : GamesBoundary { //Todo Change it to some test Lib
 
     override suspend fun listGames(): List<Game>? {
         return listOf(LOL, LOL, LOL, LOL)
@@ -14,7 +14,7 @@ class MockVideoGameRepository : RawgVideoGameBoundary { //Todo Change it to some
         return LOL
     }
     companion object{
-        val LOL = ApiGame(
+        val LOL = ApiRawgGame(
             id = 1,
             name = "League Of Legends",
             dominantColor = "#DECE7E",

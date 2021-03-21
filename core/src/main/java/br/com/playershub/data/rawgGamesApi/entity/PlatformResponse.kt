@@ -1,15 +1,15 @@
-package br.com.playershub.data.RAWGVideoGame.entity
+package br.com.playershub.data.rawgGamesApi.entity
 
 
 import com.google.gson.annotations.SerializedName
 
-data class GameResponse(
+data class PlatformResponse(
     @SerializedName("count")
     val count: Int?,
     @SerializedName("next")
     val next: String?,
     @SerializedName("previous")
-    val previous: Any?,
+    val previous: String?,
     @SerializedName("results")
-    val results: List<ApiGame>
+    val platforms: List<ApiPlatform>?
 )
