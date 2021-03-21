@@ -10,7 +10,7 @@ import br.com.playershub.data.utils.ApiUtilsProvider
 import br.com.playershub.data.utils.VIDEO_GAME_DB_URL
 import retrofit2.Response
 
-class GamesPlatformClient  {
+class RawgGamesClient : GamesApiDataSource  {
 
     private val client = ApiUtilsProvider.retrofit(
         apiBaseUrl = VIDEO_GAME_DB_URL,
@@ -18,19 +18,19 @@ class GamesPlatformClient  {
         authInterceptor = GameApiInterceptor()
     )
 
-    suspend fun listPlatforms(): PlatformResponse? {
-        return client.listPlatforms().body()
+    override suspend fun listPlatforms(): Response<PlatformResponse> {
+        return client.listPlatforms()
     }
 
-    suspend fun detailPlatform(id: Int): ApiPlatform? {
-        return client.detailPlatform(id).body()
+    override suspend fun detailPlatform(id: Int): Response<ApiPlatform> {
+        return client.detailPlatform(id)
     }
 
-    suspend fun listGames(): GameResponse? {
-        return client.listGames().body()
+    override suspend fun listGames(): Response<GameResponse> {
+        return client.listGames()
     }
 
-    suspend fun detailGame(id: Int): ApiGame? {
-        return client.detailGame(id).body()
+    override suspend fun detailGame(id: Int): Response<ApiGame> {
+        return client.detailGame(id)
     }
 }

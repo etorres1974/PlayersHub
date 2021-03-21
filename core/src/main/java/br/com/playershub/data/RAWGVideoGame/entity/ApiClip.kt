@@ -3,7 +3,7 @@ package br.com.playershub.data.RAWGVideoGame.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class Clip(
+data class ApiClip(
     @SerializedName("clip")
     val clip: String?,
     @SerializedName("preview")

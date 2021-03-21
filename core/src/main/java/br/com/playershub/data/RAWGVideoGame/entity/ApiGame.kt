@@ -1,63 +1,64 @@
 package br.com.playershub.data.RAWGVideoGame.entity
 
 
+import br.com.playershub.domain.entity.Game
 import com.google.gson.annotations.SerializedName
 
 data class ApiGame(
     @SerializedName("added")
-    val added: Int?,
+    val added: Int? = null,
     @SerializedName("added_by_status")
-    val addedByStatus: AddedByStatus?,
+    val addedByStatus: AddedByStatus? = null,
     @SerializedName("background_image")
-    val backgroundImage: String?,
+    override val backgroundImage: String? = null,
     @SerializedName("clip")
-    val clip: Clip?,
+    val clip: ApiClip? = null,
     @SerializedName("dominant_color")
-    val dominantColor: String?,
+    override val dominantColor: String? = null,
     @SerializedName("esrb_rating")
-    val esrbRating: EsrbRating?,
+    val esrbRating: ApiEsrbRating? = null,
     @SerializedName("genres")
-    val genres: List<Genre>?,
+    val genres: List<ApiGenre>? = null,
     @SerializedName("id")
-    val id: Int?,
+    override val id: Int? = null,
     @SerializedName("metacritic")
-    val metacritic: Int?,
+    val metacritic: Int? = null,
     @SerializedName("name")
-    val name: String?,
+    override val name: String? = null,
     @SerializedName("parent_platforms")
-    val parentPlatforms: List<PlatformHolder>?,
+    val parentPlatforms: List<PlatformHolder>? = null,
     @SerializedName("platforms")
-    val platforms: List<PlatformHolder>?,
+    val platforms: List<PlatformHolder>? = null,
     @SerializedName("playtime")
-    val playtime: Int?,
+    val playtime: Int? = null,
     @SerializedName("rating")
-    val rating: Double?,
+    val rating: Double? = null,
     @SerializedName("rating_top")
-    val ratingTop: Int?,
+    val ratingTop: Int? = null,
     @SerializedName("ratings")
-    val ratings: List<Rating>?,
+    val ratings: List<ApiRating>? = null,
     @SerializedName("ratings_count")
-    val ratingsCount: Int?,
+    val ratingsCount: Int? = null,
     @SerializedName("released")
-    val released: String?,
+    val released: String? = null,
     @SerializedName("reviews_count")
-    val reviewsCount: Int?,
+    val reviewsCount: Int? = null,
     @SerializedName("reviews_text_count")
-    val reviewsTextCount: Int?,
+    val reviewsTextCount: Int? = null,
     @SerializedName("saturated_color")
-    val saturatedColor: String?,
+    override val saturatedColor: String? = null,
     @SerializedName("short_screenshots")
-    val shortScreenshots: List<ShortScreenshot>?,
+    val shortScreenshots: List<ApiShortScreenshot>? = null,
     @SerializedName("slug")
-    val slug: String?,
+    val slug: String? = null,
     @SerializedName("stores")
-    val stores: List<Store>?,
+    val stores: List<StoreResponse>? = null,
     @SerializedName("suggestions_count")
-    val suggestionsCount: Int?,
+    val suggestionsCount: Int? = null,
     @SerializedName("tags")
-    val tags: List<Tag>?,
+    val tags: List<ApiTag>? = null,
     @SerializedName("tba")
-    val tba: Boolean?,
+    val tba: Boolean? = null,
     @SerializedName("updated")
-    val updated: String?
-)
+    val updated: String? = null
+) : Game

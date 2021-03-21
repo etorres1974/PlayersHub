@@ -3,7 +3,7 @@ package br.com.playershub.data.RAWGVideoGame.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class Rating(
+data class ApiRating(
     @SerializedName("count")
     val count: Int?,
     @SerializedName("id")
