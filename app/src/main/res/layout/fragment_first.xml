@@ -7,17 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <br.com.components.Carrousel
         android:id="@+id/recycler_view_games"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_game"
-        >
-    </androidx.recyclerview.widget.RecyclerView>
+
+        />
+
 
     <Button
         android:id="@+id/button_first"

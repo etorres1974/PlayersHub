@@ -10,7 +10,7 @@ data class ApiRawgGame(
     @SerializedName("added_by_status")
     val addedByStatus: AddedByStatus? = null,
     @SerializedName("background_image")
-    val backgroundImage: String? = null,
+    override val image: String? = null,
     @SerializedName("clip")
     val clip: ApiClip? = null,
     @SerializedName("dominant_color")

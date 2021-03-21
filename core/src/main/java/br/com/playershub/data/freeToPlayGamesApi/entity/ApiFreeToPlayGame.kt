@@ -24,7 +24,7 @@ data class ApiFreeToPlayGame(
     @SerializedName("short_description")
     val shortDescription: String? = null,
     @SerializedName("thumbnail")
-    val thumbnail: String? = null,
+    override val image: String? = null,
     @SerializedName("title")
     override val name: String? = null
 ) : Game

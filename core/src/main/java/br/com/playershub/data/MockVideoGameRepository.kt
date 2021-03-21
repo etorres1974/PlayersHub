@@ -17,9 +17,7 @@ class MockVideoGameRepository : GamesBoundary { //Todo Change it to some test Li
         val LOL = ApiRawgGame(
             id = 1,
             name = "League Of Legends",
-            dominantColor = "#DECE7E",
-            saturatedColor = "#0F202C",
-            backgroundImage = "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
+            image = "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
         )
     }
 }
