@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.util.Log
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import br.com.playershub.databinding.FragmentFirstBinding
@@ -37,7 +36,7 @@ class FirstFragment : Fragment() {
     }
     private fun subscribeUi(){
         with(viewModel){
-            games.observe(viewLifecycleOwner, ::setRecyclerViewContent)
+            games.observe(viewLifecycleOwner, binding.recyclerViewGames::submitGames)
         }
     }
 

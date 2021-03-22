@@ -19,8 +19,6 @@ class SecondFragment : Fragment() {
 
     private val viewModel: ViewModel by viewModels()
 
-    private lateinit var gameAdapter : GameAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,20 +37,14 @@ class SecondFragment : Fragment() {
 
     private fun subscribeUi(){
         with(viewModel){
-            games.observe(viewLifecycleOwner){ list -> gameAdapter.submitList(list)}
+            games.observe(viewLifecycleOwner, binding.recyclerViewGames::submitGames)
         }
     }
 
     private fun setupUi(){
-        setupRecyclerView()
         with(binding){
             buttonSecond.setOnClickListener { navigate() }
         }
-    }
-
-    private fun setupRecyclerView(){
-        gameAdapter = GameAdapter()
-        binding.recyclerViewGames.adapter = gameAdapter
     }
 
     private fun navigate(){

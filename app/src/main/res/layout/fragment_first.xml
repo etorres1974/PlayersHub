@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <br.com.components.Carrousel
+    <br.com.components.GamesCarousels
         android:id="@+id/recycler_view_games"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <br.com.components.GamesCarousels
         android:id="@+id/recycler_view_games"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_game"
         >
-    </androidx.recyclerview.widget.RecyclerView>
+    </br.com.components.GamesCarousels>
 
     <Button
         android:id="@+id/button_second"
