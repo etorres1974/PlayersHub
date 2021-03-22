@@ -1,23 +1,22 @@
 package br.com.playershub
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import br.com.playershub.databinding.FragmentFirstBinding
-import br.com.playershub.domain.entity.Game
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
 
-    private lateinit var binding : FragmentFirstBinding
+    private lateinit var binding: FragmentFirstBinding
 
-    private val viewModel: ViewModel by viewModels()
+    private val viewModel: GamesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,23 +33,20 @@ class FirstFragment : Fragment() {
         subscribeUi()
         viewModel.listRawgGames()
     }
-    private fun subscribeUi(){
-        with(viewModel){
+
+    private fun subscribeUi() {
+        with(viewModel) {
             games.observe(viewLifecycleOwner, binding.recyclerViewGames::submitGames)
         }
     }
 
-    private fun setupUi(){
-        with(binding){
+    private fun setupUi() {
+        with(binding) {
             buttonFirst.setOnClickListener { navigate() }
         }
     }
 
-    private fun setRecyclerViewContent(list : List<Game>){
-        (binding.recyclerViewGames.adapter as GameAdapter).submitList(list)
-    }
-
-    private fun navigate(){
+    private fun navigate() {
         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
     }
 }

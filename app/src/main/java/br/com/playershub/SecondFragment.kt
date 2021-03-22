@@ -1,12 +1,11 @@
 package br.com.playershub
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import br.com.playershub.databinding.FragmentSecondBinding
 
@@ -17,7 +16,7 @@ class SecondFragment : Fragment() {
 
     private lateinit var binding: FragmentSecondBinding
 
-    private val viewModel: ViewModel by viewModels()
+    private val viewModel: GamesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,19 +34,19 @@ class SecondFragment : Fragment() {
         viewModel.listFreeGames()
     }
 
-    private fun subscribeUi(){
-        with(viewModel){
+    private fun subscribeUi() {
+        with(viewModel) {
             games.observe(viewLifecycleOwner, binding.recyclerViewGames::submitGames)
         }
     }
 
-    private fun setupUi(){
-        with(binding){
+    private fun setupUi() {
+        with(binding) {
             buttonSecond.setOnClickListener { navigate() }
         }
     }
 
-    private fun navigate(){
+    private fun navigate() {
         findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
     }
 }
