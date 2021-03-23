@@ -14,7 +14,7 @@ data class ApiFreeToPlayGame(
     @SerializedName("genre")
     val genre: String? = null,
     @SerializedName("id")
-    override val id: Int? = null,
+    override val id: Int,
     @SerializedName("platform")
     val platform: String? = null,
     @SerializedName("publisher")

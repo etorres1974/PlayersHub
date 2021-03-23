@@ -4,17 +4,17 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import br.com.playershub.GameAdapter
 import br.com.playershub.domain.entity.Game
 
 class GamesCarousels(context: Context, attrs: AttributeSet) : RecyclerView(context, attrs) {
 
-    init {
-        adapter = GameAdapter()
+    fun setViewModel(viewModel: GamesViewModel){
+        adapter = GameAdapter(viewModel::fetchGamesDetail)
         layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
-    fun submitGames(list : List<Game>){
+    fun setSubmitGames(list : List<Game>?){
         (this.adapter as GameAdapter).submitList(list)
     }
+
 }

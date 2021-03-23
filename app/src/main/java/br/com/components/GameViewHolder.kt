@@ -1,22 +1,21 @@
-package br.com.playershub
+package br.com.components
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.playershub.databinding.ItemGameBinding
 import br.com.playershub.domain.entity.Game
 import br.com.util.loadImageUrl
-import com.squareup.picasso.Picasso
 
 
 class GameViewHolder(
     private val binding: ItemGameBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(game: Game) {
+    fun bind(game: Game, callback: (Int) -> Unit) {
         binding.game = game
-        game.image?.let{
+        binding.root.setOnClickListener {  callback(game.id)}
+        game.image?.let {
             binding.imageView.loadImageUrl(it)
         }
     }

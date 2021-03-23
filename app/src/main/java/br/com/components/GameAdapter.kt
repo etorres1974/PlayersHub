@@ -1,18 +1,20 @@
-package br.com.playershub
+package br.com.components
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import br.com.playershub.domain.entity.Game
 
-class GameAdapter : ListAdapter<Game, GameViewHolder>(DiffUtilCallback) {
+class GameAdapter(
+    private val callback : (Int) -> Unit
+) : ListAdapter<Game, GameViewHolder>(DiffUtilCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameViewHolder {
         return GameViewHolder.inflate(parent)
     }
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        holder.bind(currentList[position], callback)
     }
 
     override fun getItemCount(): Int = currentList.size

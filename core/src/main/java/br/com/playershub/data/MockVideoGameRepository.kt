@@ -3,6 +3,7 @@ package br.com.playershub.data
 import br.com.playershub.data.rawgGamesApi.entity.ApiRawgGame
 import br.com.playershub.domain.boundary.GamesBoundary
 import br.com.playershub.domain.entity.Game
+import br.com.playershub.domain.entity.GameDetails
 
 class MockVideoGameRepository : GamesBoundary { //Todo Change it to some test Lib
 
@@ -10,8 +11,8 @@ class MockVideoGameRepository : GamesBoundary { //Todo Change it to some test Li
         return listOf(LOL, LOL, LOL, LOL)
     }
 
-    override suspend fun detailGames(id: Int): Game? {
-        return LOL
+    override suspend fun detailGames(id: Int): GameDetails? {
+        return LOL as GameDetails
     }
     companion object{
         val LOL = ApiRawgGame(

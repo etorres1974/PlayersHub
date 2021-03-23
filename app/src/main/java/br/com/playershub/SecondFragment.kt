@@ -16,7 +16,7 @@ class SecondFragment : Fragment() {
 
     private lateinit var binding: FragmentSecondBinding
 
-    private val viewModel: GamesViewModel by activityViewModels()
+    private val viewModel: RawgGamesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,24 +29,11 @@ class SecondFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUi()
         subscribeUi()
-        viewModel.listFreeGames()
     }
 
     private fun subscribeUi() {
         with(viewModel) {
-            games.observe(viewLifecycleOwner, binding.recyclerViewGames::submitGames)
         }
-    }
-
-    private fun setupUi() {
-        with(binding) {
-            buttonSecond.setOnClickListener { navigate() }
-        }
-    }
-
-    private fun navigate() {
-        findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
     }
 }

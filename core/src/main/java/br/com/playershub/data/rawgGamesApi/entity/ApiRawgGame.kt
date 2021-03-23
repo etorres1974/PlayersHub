@@ -20,7 +20,7 @@ data class ApiRawgGame(
     @SerializedName("genres")
     val genres: List<ApiGenre>? = null,
     @SerializedName("id")
-    override val id: Int? = null,
+    override val id: Int ,
     @SerializedName("metacritic")
     val metacritic: Int? = null,
     @SerializedName("name")
