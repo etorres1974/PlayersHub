@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="rawgViewModel"
             type="br.com.playershub.RawgGamesViewModel" />
@@ -23,8 +22,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="AllGames"
-                android:textSize="20dp"
-                />
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name" />
 
             <br.com.components.GamesCarousels
                 android:id="@+id/recycler_view_rawg_games"
@@ -41,7 +44,6 @@
                 app:viewModel="@{rawgViewModel}"
                 app:submitGames="@{rawgViewModel.gamesUpcoming}"
                 tools:listitem="@layout/item_game" />
-
 
             <br.com.components.GamesCarousels
                 android:id="@+id/recycler_view_rawg_games_hot"
