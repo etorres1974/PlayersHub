@@ -12,15 +12,18 @@
         <action
             android:id="@+id/action_to_details_fragment"
             app:destination="@id/SecondFragment">
-            <argument
-                android:name="gameId"
-                android:defaultValue="-1"
-                app:argType="integer" />
+
         </action>
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
         android:name="br.com.playershub.SecondFragment"
         tools:layout="@layout/fragment_second">
+        <argument
+            android:name="gameId"
+            app:argType="integer"
+            android:defaultValue="-1"
+            app:nullable="false"
+            />
     </fragment>
 </navigation>

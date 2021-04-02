@@ -2,6 +2,7 @@ package br.com.playershub.data.rawgGamesApi.entity
 
 
 import br.com.playershub.domain.entity.Game
+import br.com.playershub.domain.entity.GameDetails
 import com.google.gson.annotations.SerializedName
 
 data class ApiRawgGame(
@@ -60,5 +61,7 @@ data class ApiRawgGame(
     @SerializedName("tba")
     val tba: Boolean? = null,
     @SerializedName("updated")
-    val updated: String? = null
+    val updated: String? = null,
+    @SerializedName("description")
+    val description : String? = null
 ) : Game

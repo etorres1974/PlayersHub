@@ -12,6 +12,7 @@ class RawgGamesApiInterceptor : Interceptor {
             addHeader("x-rapidapi-key", VIDEO_GAME_DB_KEY)
             addHeader("x-rapidapi-host", VIDEO_GAME_DB_HOST)
         }.build()
+
         return chain.proceed(request)
     }
 }

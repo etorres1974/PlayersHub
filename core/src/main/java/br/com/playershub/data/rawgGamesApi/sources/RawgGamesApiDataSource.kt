@@ -1,11 +1,10 @@
 package br.com.playershub.data.rawgGamesApi.sources
 
-import br.com.playershub.data.rawgGamesApi.entity.ApiRawgGame
-import br.com.playershub.data.rawgGamesApi.entity.ApiPlatform
-import br.com.playershub.data.rawgGamesApi.entity.GameResponse
-import br.com.playershub.data.rawgGamesApi.entity.PlatformResponse
+import br.com.playershub.data.rawgGamesApi.entity.*
+import br.com.playershub.data.utils.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RawgGamesApiDataSource {
@@ -18,8 +17,10 @@ interface RawgGamesApiDataSource {
     @GET("games")
     suspend fun listGames(): Response<GameResponse>
 
-    @GET("games")
-    suspend fun detailGame(@Query("id") id: Int): Response<ApiRawgGame>
+    @GET("games/{id}")
+    suspend fun detailGame(
+        @Path("id") id: Int,
+    ): Response<ApiRawgGameDetails>
 
     /* Todo Uncomment and change any to correct entity
     @GET("genres")

@@ -3,7 +3,8 @@ package br.com.playershub.domain.entity
 interface GameDetails {
     val id: Int
     val name: String?
-    val image : String?
+    val image: String?
+    val description: String
     //val clip: ApiClip?,
     //val esrbRating: ApiEsrbRating?,
     //val genres: List<ApiGenre>?,

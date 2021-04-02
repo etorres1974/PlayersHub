@@ -1,36 +1,36 @@
 package br.com.playershub.data.rawgGamesApi.clients
 
-import br.com.playershub.data.rawgGamesApi.entity.ApiRawgGame
-import br.com.playershub.data.rawgGamesApi.entity.ApiPlatform
-import br.com.playershub.data.rawgGamesApi.entity.GameResponse
-import br.com.playershub.data.rawgGamesApi.entity.PlatformResponse
+import br.com.playershub.data.rawgGamesApi.entity.*
 import br.com.playershub.data.rawgGamesApi.interceptors.RawgGamesApiInterceptor
 import br.com.playershub.data.rawgGamesApi.sources.RawgGamesApiDataSource
+import br.com.playershub.data.utils.API_KEY
 import br.com.playershub.data.utils.ApiUtilsProvider
+import br.com.playershub.data.utils.VIDEO_GAME_DB_HOST
 import br.com.playershub.data.utils.VIDEO_GAME_DB_URL
+import okhttp3.HttpUrl
 import retrofit2.Response
 
-class RawgGamesClient : RawgGamesApiDataSource {
-
+class RawgGamesClient {
+    private val httpUrl = ApiUtilsProvider.httpsUrl(VIDEO_GAME_DB_HOST, API_KEY)
     private val client = ApiUtilsProvider.retrofit(
-        apiBaseUrl = VIDEO_GAME_DB_URL,
+        httpUrl = httpUrl,
         apiServiceInterface = RawgGamesApiDataSource::class.java,
         authInterceptor = RawgGamesApiInterceptor()
     )
 
-    override suspend fun listPlatforms(): Response<PlatformResponse> {
+    suspend fun listPlatforms(): Response<PlatformResponse> {
         return client.listPlatforms()
     }
 
-    override suspend fun detailPlatform(id: Int): Response<ApiPlatform> {
+    suspend fun detailPlatform(id: Int): Response<ApiPlatform> {
         return client.detailPlatform(id)
     }
 
-    override suspend fun listGames(): Response<GameResponse> {
+    suspend fun listGames(): Response<GameResponse> {
         return client.listGames()
     }
 
-    override suspend fun detailGame(id: Int): Response<ApiRawgGame> {
+    suspend fun detailGame(id: Int): Response<ApiRawgGameDetails> {
         return client.detailGame(id)
     }
 }

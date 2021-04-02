@@ -1,18 +1,15 @@
 package br.com.playershub
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavDirections
 import br.com.components.GamesViewModel
-import br.com.playershub.data.MockVideoGameRepository
 import br.com.playershub.domain.entity.Game
+import br.com.playershub.domain.entity.GameDetails
 import br.com.playershub.domain.interactors.GetGames
 import br.com.util.BaseViewModel
 
 class RawgGamesViewModel(
-    private val getGames: GetGames = GetGames(),
-    private val mock: MockVideoGameRepository = MockVideoGameRepository()
+    private val getGames: GetGames = GetGames()
 ) : BaseViewModel(), GamesViewModel {
 
     override val games: LiveData<List<Game>> get() = _games
@@ -21,6 +18,9 @@ class RawgGamesViewModel(
     override val openDetails: LiveData<Int> get() = _openDetails
     private val _openDetails by lazy { MutableLiveData<Int>() }
 
+    val gameDetails: LiveData<GameDetails> get() = _gameDetails
+    private val _gameDetails by lazy { MutableLiveData<GameDetails>() }
+
     init {
         launchDataLoad {
             _games.value = getGames.list()
@@ -28,9 +28,15 @@ class RawgGamesViewModel(
     }
 
     override fun fetchGamesDetail(id: Int) {
-        Log.d("Test", "id : $id")
         val action = FirstFragmentDirections.actionToDetailsFragment(id)
+        //getGame(id)
         setNewDestination(action)
+    }
+
+    fun getGame(id: Int) {
+        launchDataLoad {
+            _gameDetails.value = getGames.byId(id)
+        }
     }
 
 }
