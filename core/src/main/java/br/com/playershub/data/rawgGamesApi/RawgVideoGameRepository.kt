@@ -1,4 +1,4 @@
-package br.com.playershub.data
+package br.com.playershub.data.rawgGamesApi
 
 import br.com.playershub.data.rawgGamesApi.clients.RawgGamesClient
 import br.com.playershub.domain.boundary.GamesBoundary

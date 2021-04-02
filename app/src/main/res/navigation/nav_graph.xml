@@ -21,13 +21,6 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="br.com.playershub.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second"
-        >
-        <action
-            android:id="@+id/action_to_list_fragment"
-            app:popUpTo="@id/FirstFragment"
-            app:destination="@id/FirstFragment"
-            />
+        tools:layout="@layout/fragment_second">
     </fragment>
 </navigation>

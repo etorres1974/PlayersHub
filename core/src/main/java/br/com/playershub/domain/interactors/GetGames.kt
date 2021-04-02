@@ -1,7 +1,6 @@
 package br.com.playershub.domain.interactors
 
-import br.com.playershub.data.RawgVideoGameRepository
-import br.com.playershub.data.rawgGamesApi.FreeToPlayGameRepository
+import br.com.playershub.data.rawgGamesApi.RawgVideoGameRepository
 import br.com.playershub.domain.boundary.GamesBoundary
 
 class GetGames(

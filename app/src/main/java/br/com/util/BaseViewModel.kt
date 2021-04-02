@@ -1,26 +1,25 @@
-package br.com.playershub
+package br.com.util
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import br.com.playershub.domain.entity.GameDetails
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.*
+import androidx.navigation.NavDirections
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-open class SharedViewModel : ViewModel(){
+open class BaseViewModel : ViewModel(), LifecycleObserver{
 
     val loading : LiveData<Boolean> get() = _loading
     private val _loading by lazy { MutableLiveData<Boolean>() }
 
-    private fun showLoading(boolean: Boolean) {
-        _loading.value = boolean
+    val newDestination: LiveData<NavDirections> get() = _newDestination
+    private val _newDestination by lazy { MutableLiveData<NavDirections>() }
+
+    fun setNewDestination(navDirections: NavDirections) {
+        _newDestination.value = navDirections
     }
 
-    private fun defaultOnFailure(throwable: Throwable) {
-        Log.d("Request Fail", throwable.toString())
+    private fun showLoading(boolean: Boolean) {
+        _loading.value = boolean
     }
 
     fun launchDataLoad(
@@ -38,5 +37,9 @@ open class SharedViewModel : ViewModel(){
                 showLoading(false)
             }
         }
+    }
+
+    private fun defaultOnFailure(throwable: Throwable) {
+        Log.d("Request Fail", throwable.toString())
     }
 }

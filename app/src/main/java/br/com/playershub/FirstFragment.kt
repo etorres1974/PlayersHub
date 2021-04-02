@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import br.com.components.GamesViewModel
 import br.com.playershub.databinding.FragmentFirstBinding
 
 /**
@@ -17,7 +18,6 @@ class FirstFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
 
     private val rawgGamesViewModel: RawgGamesViewModel by activityViewModels()
-    private val freeGamesViewModel: FreeGamesViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,15 +31,8 @@ class FirstFragment : Fragment() {
 
     private fun subscribeUi() {
         with(binding) {
-           freeViewModel = freeGamesViewModel
-           rawgViewModel = rawgGamesViewModel
-           lifecycleOwner = this@FirstFragment
-           freeGamesViewModel.openDetails.observe(this@FirstFragment.viewLifecycleOwner, ::navigateToDetails)
+            lifecycleOwner = this@FirstFragment
+            rawgViewModel = rawgGamesViewModel
         }
-    }
-
-    private fun navigateToDetails(gameId : Int) {
-        var action = FirstFragmentDirections.actionToDetailsFragment(gameId)
-        findNavController().navigate(action)
     }
 }

@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayersHub">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
+            android:name=".activity.MainActivity"
             android:theme="@style/Theme.PlayersHub.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

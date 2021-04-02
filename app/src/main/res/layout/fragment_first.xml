@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="freeViewModel"
-            type="br.com.playershub.FreeGamesViewModel" />
-        <variable
             name="rawgViewModel"
             type="br.com.playershub.RawgGamesViewModel" />
     </data>
@@ -25,16 +22,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <br.com.components.GamesCarousels
-        android:id="@+id/recycler_view_free_games"
-        app:viewModel="@{freeViewModel}"
-        app:submitGames="@{freeViewModel.games}"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recycler_view_rawg_games"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
