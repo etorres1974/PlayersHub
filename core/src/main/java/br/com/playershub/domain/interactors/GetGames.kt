@@ -8,5 +8,7 @@ class GetGames(
 ) {
     suspend fun list() = repository.listGames()
 
+    suspend fun upcoming() = repository.listGamesUpcoming()
+
     suspend fun byId(id: Int) = repository.detailGames(id)
 }

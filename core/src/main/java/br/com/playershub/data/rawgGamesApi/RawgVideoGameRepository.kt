@@ -13,6 +13,10 @@ class RawgVideoGameRepository(
         return dataSource.listGames().body()?.results
     }
 
+    override suspend fun listGamesUpcoming(): List<Game>? {
+        return dataSource.listGamesUpcoming().body()?.results
+    }
+
     override suspend fun detailGames(id: Int): GameDetails? {
         return dataSource.detailGame(id).body() as GameDetails
     }

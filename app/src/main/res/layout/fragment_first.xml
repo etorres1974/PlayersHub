@@ -2,27 +2,55 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="rawgViewModel"
             type="br.com.playershub.RawgGamesViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="4dp"
-    tools:context=".FirstFragment">
 
-    <br.com.components.GamesCarousels
-        android:id="@+id/recycler_view_rawg_games"
-        tools:listitem="@layout/item_game"
-        app:viewModel="@{rawgViewModel}"
-        app:submitGames="@{rawgViewModel.games}"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AllGames"
+                android:textSize="20dp"
+                />
+
+            <br.com.components.GamesCarousels
+                android:id="@+id/recycler_view_rawg_games"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:viewModel="@{rawgViewModel}"
+                app:submitGames="@{rawgViewModel.games}"
+                tools:listitem="@layout/item_game" />
+
+            <br.com.components.GamesCarousels
+                android:id="@+id/recycler_view_rawg_gamesUpcoming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:viewModel="@{rawgViewModel}"
+                app:submitGames="@{rawgViewModel.gamesUpcoming}"
+                tools:listitem="@layout/item_game" />
+
+
+            <br.com.components.GamesCarousels
+                android:id="@+id/recycler_view_rawg_games_hot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:viewModel="@{rawgViewModel}"
+                app:submitGames="@{rawgViewModel.gamesUpcoming}"
+                tools:listitem="@layout/item_game" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>

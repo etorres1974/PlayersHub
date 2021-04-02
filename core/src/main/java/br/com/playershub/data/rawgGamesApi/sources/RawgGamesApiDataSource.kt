@@ -17,6 +17,13 @@ interface RawgGamesApiDataSource {
     @GET("games")
     suspend fun listGames(): Response<GameResponse>
 
+    @GET("games") //GET https://api.rawg.io/api/games?dates=2019-10-10,2020-10-10&ordering=-added
+    suspend fun listGamesUpcoming(
+        @Query("dates") dateRange: String,
+        @Query("ordering") ordering : String,
+
+    ): Response<GameResponse>
+
     @GET("games/{id}")
     suspend fun detailGame(
         @Path("id") id: Int,
