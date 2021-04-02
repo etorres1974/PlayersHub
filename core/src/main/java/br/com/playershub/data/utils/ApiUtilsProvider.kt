@@ -12,12 +12,6 @@ object ApiUtilsProvider {
     private val logInterceptor =
         HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
-    fun httpsUrl(host: String, key: String) =
-        HttpUrl.Builder()
-            .host(host)
-            .scheme("https")
-            .addQueryParameter("key", key).build()
-
     private fun httpClient(authInterceptor: Interceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(authInterceptor)
@@ -37,19 +31,6 @@ object ApiUtilsProvider {
         return Retrofit.Builder()
             .client(httpClient(authInterceptor))
             .baseUrl(apiBaseUrl)
-            .addConverterFactory(converterFactory())
-            .build()
-            .create(apiServiceInterface)
-    }
-
-    fun <T> retrofit(
-        httpUrl: HttpUrl,
-        apiServiceInterface: Class<T>,
-        authInterceptor: Interceptor
-    ): T {
-        return Retrofit.Builder()
-            .client(httpClient(authInterceptor))
-            .baseUrl(httpUrl)
             .addConverterFactory(converterFactory())
             .build()
             .create(apiServiceInterface)

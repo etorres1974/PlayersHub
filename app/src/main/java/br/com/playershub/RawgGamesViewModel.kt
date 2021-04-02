@@ -29,7 +29,7 @@ class RawgGamesViewModel(
 
     override fun fetchGamesDetail(id: Int) {
         val action = FirstFragmentDirections.actionToDetailsFragment(id)
-        //getGame(id)
+        getGame(id)
         setNewDestination(action)
     }
 

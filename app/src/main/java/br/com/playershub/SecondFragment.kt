@@ -25,7 +25,6 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSecondBinding.inflate(inflater, container, false)
-        viewModel.getGame(args.gameId)
         subscribeUi()
         return binding.root
     }

@@ -9,11 +9,12 @@ import br.com.playershub.data.utils.VIDEO_GAME_DB_HOST
 import br.com.playershub.data.utils.VIDEO_GAME_DB_URL
 import okhttp3.HttpUrl
 import retrofit2.Response
+import retrofit2.http.Url
+import java.net.URL
 
 class RawgGamesClient {
-    private val httpUrl = ApiUtilsProvider.httpsUrl(VIDEO_GAME_DB_HOST, API_KEY)
     private val client = ApiUtilsProvider.retrofit(
-        httpUrl = httpUrl,
+        apiBaseUrl =  VIDEO_GAME_DB_URL,
         apiServiceInterface = RawgGamesApiDataSource::class.java,
         authInterceptor = RawgGamesApiInterceptor()
     )
