@@ -19,6 +19,11 @@ class FirstFragment : Fragment() {
 
     private val rawgGamesViewModel: RawgGamesViewModel by activityViewModels()
 
+    override fun onResume() {
+        super.onResume()
+        rawgGamesViewModel.init()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -1,6 +1,9 @@
 package br.com.playershub.data.rawgGamesApi.sources
 
 import br.com.playershub.data.rawgGamesApi.entity.*
+import br.com.playershub.data.rawgGamesApi.entity.games.ApiGameDetails
+import br.com.playershub.data.rawgGamesApi.entity.games.ApiGamesResponse
+import br.com.playershub.data.rawgGamesApi.entity.games.Platform
 import br.com.playershub.data.utils.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -9,25 +12,24 @@ import retrofit2.http.Query
 
 interface RawgGamesApiDataSource {
     @GET("platforms")
-    suspend fun listPlatforms(): Response<PlatformResponse>
+    suspend fun listPlatforms(): Response<Platform>
 
     @GET("platforms")
-    suspend fun detailPlatform(@Query("id") id: Int): Response<ApiPlatform>
+    suspend fun detailPlatform(@Query("id") id: Int): Response<Platform>
 
     @GET("games")
-    suspend fun listGames(): Response<GameResponse>
+    suspend fun listGames(): Response<ApiGamesResponse>
 
     @GET("games") //GET https://api.rawg.io/api/games?dates=2019-10-10,2020-10-10&ordering=-added
     suspend fun listGamesUpcoming(
         @Query("dates") dateRange: String,
         @Query("ordering") ordering : String,
-
-    ): Response<GameResponse>
+    ): Response<ApiGamesResponse>
 
     @GET("games/{id}")
     suspend fun detailGame(
         @Path("id") id: Int,
-    ): Response<ApiRawgGameDetails>
+    ): Response<ApiGameDetails>
 
     /* Todo Uncomment and change any to correct entity
     @GET("genres")

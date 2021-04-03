@@ -25,6 +25,10 @@ class RawgGamesViewModel(
     private val _gameDetails by lazy { MutableLiveData<GameDetails>() }
 
     init {
+        init()
+    }
+
+    fun init() {
         launchDataLoad {
             _games.value = getGames.list()
             _gamesUpcoming.value = getGames.upcoming()
