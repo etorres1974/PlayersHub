@@ -20,6 +20,9 @@
             android:src="@drawable/ic_launcher_foreground" />
 
         <TextView
+            android:lineSpacingExtra="4dp"
+            android:justificationMode="inter_word"
+            tools:text="@string/lorem"
             android:layout_margin="8dp"
             android:id="@+id/text_view_description"
             android:layout_width="match_parent"
