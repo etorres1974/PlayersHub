@@ -4,8 +4,8 @@ interface GameDetails {
     val id: Int
     val name: String?
     val image: String?
+    val altImage : String?
     val description: String?
-    //val clip: ApiClip?,
     //val esrbRating: ApiEsrbRating?,
     //val genres: List<ApiGenre>?,
     //val parentPlatforms: List<PlatformHolder>?,
