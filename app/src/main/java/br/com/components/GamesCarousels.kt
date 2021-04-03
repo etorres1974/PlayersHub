@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.playershub.R
 import br.com.playershub.databinding.CarousselBinding
@@ -24,6 +25,19 @@ class GamesCarousels(context: Context, attrs: AttributeSet) : LinearLayout(conte
         with(binding.recyclerView) {
             adapter = GameAdapter(viewModel::fetchGamesDetail)
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    fun setPagedViewModel(viewModel: GamesViewModel) {
+        with(binding.recyclerView) {
+            adapter = GamePagedAdapter(viewModel::fetchGamesDetail)
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    fun setSubmitPagedGames(list: PagedList<Game>?) {
+        with(binding.recyclerView) {
+            (this.adapter as GamePagedAdapter).submitList(list)
         }
     }
 

@@ -64,6 +64,11 @@ dependencies {
     //ImageHandling
     implementation  "com.squareup.picasso:picasso:$picasso_version"
 
+    //Paging
+    def paging_version = "2.1.2"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version" // For Kotlin use paging-runtime-ktx
+    // alternatively - without Android dependencies for testing
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version" // For Kotlin use paging-common-ktx
 
     //Testing
     testImplementation 'junit:junit:4.1.3'

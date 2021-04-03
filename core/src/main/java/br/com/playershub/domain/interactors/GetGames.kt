@@ -6,6 +6,7 @@ import br.com.playershub.domain.boundary.GamesBoundary
 class GetGames(
     private val repository: GamesBoundary = RawgVideoGameRepository()
 ) {
+
     suspend fun list() = repository.listGames()
 
     suspend fun upcoming() = repository.listGamesUpcoming()

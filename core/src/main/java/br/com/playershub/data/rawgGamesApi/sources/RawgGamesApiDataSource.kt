@@ -21,6 +21,12 @@ interface RawgGamesApiDataSource {
     suspend fun listGames(): Response<ApiGamesResponse>
 
     @GET("games")
+    suspend fun listPagedGames(
+        @Query("page") page: Int,
+        @Query("page_size") size : Int
+    ): Response<ApiGamesResponse>
+
+    @GET("games")
     suspend fun listGamesByDateRange(
         @Query("dates") dateRange: String,
         @Query("ordering") ordering : Ordering,

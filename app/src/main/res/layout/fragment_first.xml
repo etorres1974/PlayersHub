@@ -24,8 +24,8 @@
                 android:id="@+id/recycler_view_rawg_games"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:viewModel="@{rawgViewModel}"
-                app:submitGames="@{rawgViewModel.games}"
+                app:pagedViewModel="@{rawgViewModel}"
+                app:submitPagedGames="@{rawgViewModel.pagedGames}"
                 app:title="@string/all_games"
                 tools:listitem="@layout/item_game" />
 

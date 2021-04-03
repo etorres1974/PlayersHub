@@ -32,4 +32,9 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    //Paging
+    def paging_version = "2.1.2"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+
 }

@@ -1,5 +1,6 @@
 package br.com.playershub.data.rawgGamesApi
 
+import androidx.paging.DataSource
 import br.com.playershub.data.rawgGamesApi.clients.RawgGamesClient
 import br.com.playershub.domain.boundary.GamesBoundary
 import br.com.playershub.domain.entity.Game

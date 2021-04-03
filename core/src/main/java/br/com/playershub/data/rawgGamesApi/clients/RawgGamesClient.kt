@@ -18,6 +18,10 @@ class RawgGamesClient {
         authInterceptor = RawgGamesApiInterceptor()
     )
 
+    suspend fun listPagedGames(page : Int, size : Int): Response<ApiGamesResponse> {
+        return client.listPagedGames(page, size)
+    }
+
     suspend fun listGames(): Response<ApiGamesResponse> {
         return client.listGames()
     }
