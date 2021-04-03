@@ -44,9 +44,16 @@
                 android:layout_height="wrap_content"
                 app:title="@string/trending"
                 app:viewModel="@{rawgViewModel}"
-                app:submitGames="@{rawgViewModel.gamesUpcoming}"
+                app:submitGames="@{rawgViewModel.gamesTrending}"
                 tools:listitem="@layout/item_game" />
-
+            <TextView
+                android:textColor="@color/link"
+                android:id="@+id/rawg_host"
+                android:layout_margin="4dp"
+                android:layout_gravity="end"
+                android:text="@string/rawg_terms_of_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

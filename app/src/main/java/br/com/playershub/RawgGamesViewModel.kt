@@ -18,6 +18,9 @@ class RawgGamesViewModel(
     override val gamesUpcoming: LiveData<List<Game>> get() = _gamesUpcoming
     private val _gamesUpcoming by lazy { MutableLiveData<List<Game>>() }
 
+    override val gamesTrending: LiveData<List<Game>> get() = _gamesTrending
+    private val _gamesTrending by lazy { MutableLiveData<List<Game>>() }
+
     override val openDetails: LiveData<Int> get() = _openDetails
     private val _openDetails by lazy { MutableLiveData<Int>() }
 
@@ -32,6 +35,7 @@ class RawgGamesViewModel(
         launchDataLoad {
             _games.value = getGames.list()
             _gamesUpcoming.value = getGames.upcoming()
+            _gamesTrending.value = getGames.trending()
         }
     }
 

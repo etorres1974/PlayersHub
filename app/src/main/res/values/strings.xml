@@ -5,4 +5,6 @@
     <string name="all_games">All Games</string>
     <string name="upcoming_year">Upcoming this year</string>
     <string name="trending">Trending now</string>
+    <string name="rawg_terms_of_service">All images and data provided by RAWG </string>
+    <string name="rawg_host">https://rawg.io/</string>
 </resources>

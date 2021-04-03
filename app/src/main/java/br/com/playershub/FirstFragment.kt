@@ -1,5 +1,7 @@
 package br.com.playershub
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +40,9 @@ class FirstFragment : Fragment() {
         with(binding) {
             lifecycleOwner = this@FirstFragment
             rawgViewModel = rawgGamesViewModel
+            rawgHost.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.rawg_host))))
+            }
         }
     }
 }

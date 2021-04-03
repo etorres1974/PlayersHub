@@ -1,6 +1,7 @@
 package br.com.playershub.data.rawgGamesApi.clients
 
 
+import br.com.playershub.data.rawgGamesApi.entity.Ordering
 import br.com.playershub.data.rawgGamesApi.entity.games.ApiGameDetails
 import br.com.playershub.data.rawgGamesApi.entity.games.ApiGamesResponse
 import br.com.playershub.data.rawgGamesApi.interceptors.RawgGamesApiInterceptor
@@ -24,12 +25,22 @@ class RawgGamesClient {
     suspend fun listGamesUpcoming(): Response<ApiGamesResponse> {
         val today = LocalDate.now()
         val nextYear = LocalDate.now().plusYears(1)
-        val dates = "$today,$nextYear"
-        val ordering = "-added"
-        return client.listGamesUpcoming(dates, ordering)
+        val dates = formatDateRange(today, nextYear)
+        val ordering = Ordering.I_ADDED
+        return client.listGamesByDateRange(dates, ordering)
+    }
+
+    suspend fun listGamesTrending(): Response<ApiGamesResponse> {
+        val today = LocalDate.now()
+        val lastSemester = today.plusMonths(-3)
+        val dates = formatDateRange(lastSemester, today)
+        val ordering = Ordering.RATING
+        return client.listGamesByDateRange(dates, ordering)
     }
 
     suspend fun detailGame(id: Int): Response<ApiGameDetails> {
         return client.detailGame(id)
     }
+
+    private fun formatDateRange(from : LocalDate, to : LocalDate) =  "$from,$to"
 }

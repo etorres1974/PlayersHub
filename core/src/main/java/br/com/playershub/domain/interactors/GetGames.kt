@@ -10,5 +10,7 @@ class GetGames(
 
     suspend fun upcoming() = repository.listGamesUpcoming()
 
+    suspend fun trending() = repository.listGamesTrending()
+
     suspend fun byId(id: Int) = repository.detailGames(id)
 }

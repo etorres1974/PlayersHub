@@ -10,13 +10,15 @@ class RawgVideoGameRepository(
 ) : GamesBoundary {
 
     override suspend fun listGames(): List<Game>? {
-        val body = dataSource.listGames().body()
-        return body?.results
+        return dataSource.listGames().body()?.results
     }
 
     override suspend fun listGamesUpcoming(): List<Game>? {
-        val body = dataSource.listGamesUpcoming().body()
-        return body?.results
+        return dataSource.listGamesUpcoming().body()?.results
+    }
+
+    override suspend fun listGamesTrending(): List<Game>? {
+        return dataSource.listGamesTrending().body()?.results
     }
 
     override suspend fun detailGames(id: Int): GameDetails? {

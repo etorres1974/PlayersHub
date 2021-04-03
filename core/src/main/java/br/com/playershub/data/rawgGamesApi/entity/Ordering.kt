@@ -4,6 +4,7 @@ enum class Ordering(value : String) {
     NAME("name"),
     RELEASED("released"),
     ADDED("added"),
+    I_ADDED("-added"),
     CREATED("created"),
     UPDATED("updated"),
     RATING("rating"),
