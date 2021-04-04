@@ -58,6 +58,4 @@ class GenericPagedDataSource<T>(
             }
         }
     }
-
-    //"https://api.rawg.io/api/games?key=128a503705e94b71836ebad8f7963efa&page=2&page_size=30"
 }
