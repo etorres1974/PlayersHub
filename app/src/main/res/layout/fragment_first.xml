@@ -34,8 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:title="@string/upcoming_year"
-                app:viewModel="@{rawgViewModel}"
-                app:submitGames="@{rawgViewModel.gamesUpcoming}"
+                app:pagedViewModel="@{rawgViewModel}"
+                app:submitPagedGames="@{rawgViewModel.pagedUpcomingGames}"
                 tools:listitem="@layout/item_game" />
 
             <br.com.components.GamesCarousels
@@ -43,8 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:title="@string/trending"
-                app:viewModel="@{rawgViewModel}"
-                app:submitGames="@{rawgViewModel.gamesTrending}"
+                app:pagedViewModel="@{rawgViewModel}"
+                app:submitPagedGames="@{rawgViewModel.pagedTrendingGames}"
                 tools:listitem="@layout/item_game" />
             <TextView
                 android:textColor="@color/link"

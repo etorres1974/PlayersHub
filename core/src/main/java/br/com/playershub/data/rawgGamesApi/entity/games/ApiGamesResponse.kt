@@ -1,7 +1,7 @@
 package br.com.playershub.data.rawgGamesApi.entity.games
 
 
-import br.com.playershub.data.rawgGamesApi.PagedResponse
+import br.com.playershub.data.rawgGamesApi.sources.PagedResponse
 import br.com.playershub.domain.entity.Game
 import com.google.gson.annotations.SerializedName
 

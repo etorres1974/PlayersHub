@@ -21,13 +21,6 @@ class GamesCarousels(context: Context, attrs: AttributeSet) : LinearLayout(conte
         binding.recyclerTitle = title
     }
 
-    fun setViewModel(viewModel: GamesViewModel) {
-        with(binding.recyclerView) {
-            adapter = GameAdapter(viewModel::fetchGamesDetail)
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        }
-    }
-
     fun setPagedViewModel(viewModel: GamesViewModel) {
         with(binding.recyclerView) {
             adapter = GamePagedAdapter(viewModel::fetchGamesDetail)
@@ -38,12 +31,6 @@ class GamesCarousels(context: Context, attrs: AttributeSet) : LinearLayout(conte
     fun setSubmitPagedGames(list: PagedList<Game>?) {
         with(binding.recyclerView) {
             (this.adapter as GamePagedAdapter).submitList(list)
-        }
-    }
-
-    fun setSubmitGames(list: List<Game>?) {
-        with(binding.recyclerView) {
-            (this.adapter as GameAdapter).submitList(list)
         }
     }
 }

@@ -1,35 +1,25 @@
 package br.com.playershub.data.rawgGamesApi
 
 import br.com.playershub.data.rawgGamesApi.clients.RawgGamesClient
+import br.com.playershub.data.rawgGamesApi.sources.GenericPagedDataSource
 import br.com.playershub.domain.boundary.GamesBoundary
 import br.com.playershub.domain.entity.Game
 import br.com.playershub.domain.entity.GameDetails
 
 class RawgVideoGameRepository(
-    private val client: RawgGamesClient = RawgGamesClient(),
+    private val client: RawgGamesClient = RawgGamesClient()
 ) : GamesBoundary {
 
-    private lateinit var  pagedDataSource: GenericPagedDataSource<Game>
-
-    fun listPaged(){
-        pagedDataSource = GenericPagedDataSource<Game>(::listPagedGames)
+    override fun getPagedGamesDataSource(): GenericPagedDataSource<Game> {
+        return GenericPagedDataSource(client::listPagedGames)
     }
 
-    suspend fun listPagedGames(page: Int, size: Int): List<Game>?{
-        return client.listPagedGames(page, size).body()?.results
+    override fun getPagedUpcomingGamesDataSource(): GenericPagedDataSource<Game> {
+        return GenericPagedDataSource(client::listGamesUpcoming)
     }
 
-    override suspend fun listGames(): List<Game>? {
-        return client.listGames().body()?.results
-    }
-
-    override suspend fun listGamesUpcoming(): List<Game>? {
-        return client.listGamesUpcoming().body()?.results
-    }
-
-    override suspend fun listGamesTrending(): List<Game>? {
-        return client.listGamesTrending().body()?.results
-
+    override fun getPagedTrendingGamesDataSource(): GenericPagedDataSource<Game> {
+        return GenericPagedDataSource(client::listGamesTrending)
     }
 
     override suspend fun detailGames(id: Int): GameDetails? {

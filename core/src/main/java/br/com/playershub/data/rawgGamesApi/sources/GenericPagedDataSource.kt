@@ -1,16 +1,14 @@
-package br.com.playershub.data.rawgGamesApi
+package br.com.playershub.data.rawgGamesApi.sources
 
 import androidx.paging.PageKeyedDataSource
-import br.com.playershub.data.rawgGamesApi.entity.games.ApiGamesResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import kotlin.reflect.KSuspendFunction2
 
 
 class GenericPagedDataSource<T>(
-    private val fetchApiResponse: suspend (Int, Int) ->  Response<PagedResponse<T>>,
+    val fetchApiResponse: suspend (page: Int, size: Int) -> Response<PagedResponse<T>>,
     private val scope: CoroutineScope = CoroutineScope(Dispatchers.IO)
 ) : PageKeyedDataSource<Int, T>() {
 

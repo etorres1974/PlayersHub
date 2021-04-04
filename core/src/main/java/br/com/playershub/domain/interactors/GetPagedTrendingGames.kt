@@ -3,9 +3,8 @@ package br.com.playershub.domain.interactors
 import br.com.playershub.data.rawgGamesApi.RawgVideoGameRepository
 import br.com.playershub.domain.boundary.GamesBoundary
 
-class GetGames(
+class GetPagedTrendingGames(
     private val repository: GamesBoundary = RawgVideoGameRepository()
 ) {
-
-    suspend fun byId(id: Int) = repository.detailGames(id)
+    fun invoke() = repository.getPagedTrendingGamesDataSource()
 }

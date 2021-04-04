@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(RawgGamesViewModel::class.java)
         lifecycle.addObserver(viewModel)
-
         setupToolbar()
         subscribeUi()
     }
