@@ -37,10 +37,11 @@ class RawgGamesViewModel @Inject constructor(
         pagedGames = getPagedLiveData(getPagedAllGames.invoke())
         pagedUpcomingGames = getPagedLiveData(getPagedUpcomingGames.invoke())
         pagedTrendingGames = getPagedLiveData(getPagedTrendingGames.invoke())
+        showLoading(false)
     }
 
-    override fun fetchGamesDetail(id: Int) {
-        val action = FirstFragmentDirections.actionToDetailsFragment(id)
+    override fun fetchGamesDetail(id: Int, name : String?) {
+        val action = FirstFragmentDirections.actionToDetailsFragment(id, name)
         getGame(id)
         setNewDestination(action)
     }

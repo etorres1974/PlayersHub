@@ -37,7 +37,7 @@ class SecondFragment : Fragment() {
         }
     }
 
-    fun setupGameDetail(gameDetails: GameDetails) {
+    private fun setupGameDetail(gameDetails: GameDetails) {
         with(binding) {
             with(gameDetails) {
                 altImage?.let { imageView.loadImageUrl(it) }

@@ -18,12 +18,19 @@
     <fragment
         android:id="@+id/SecondFragment"
         android:name="br.com.playershub.SecondFragment"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_second"
+        android:label="{gameName}"
+        >
         <argument
             android:name="gameId"
             app:argType="integer"
             android:defaultValue="-1"
             app:nullable="false"
+            />
+        <argument
+            android:name="gameName"
+            app:argType="string"
+            app:nullable="true"
             />
     </fragment>
 </navigation>

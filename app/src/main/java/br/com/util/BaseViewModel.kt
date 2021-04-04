@@ -18,7 +18,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver{
         _newDestination.value = navDirections
     }
 
-    private fun showLoading(boolean: Boolean) {
+    fun showLoading(boolean: Boolean) {
         _loading.value = boolean
     }
 
