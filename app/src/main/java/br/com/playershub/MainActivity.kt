@@ -1,6 +1,7 @@
-package br.com.playershub.activity
+package br.com.playershub
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -8,20 +9,21 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import br.com.playershub.R
-import br.com.playershub.RawgGamesViewModel
 import br.com.playershub.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: RawgGamesViewModel
+    private val viewModel: RawgGamesViewModel by viewModels()
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(RawgGamesViewModel::class.java)
         lifecycle.addObserver(viewModel)
         setupToolbar()
         subscribeUi()

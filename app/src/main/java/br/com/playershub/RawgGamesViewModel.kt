@@ -8,12 +8,15 @@ import br.com.playershub.domain.entity.Game
 import br.com.playershub.domain.entity.GameDetails
 import br.com.playershub.domain.interactors.*
 import br.com.util.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RawgGamesViewModel(
-    private val getGames: GetGames = GetGames(),
-    private val getPagedAllGames: GetPagedAllGames = GetPagedAllGames(),
-    private val getPagedUpcomingGames: GetPagedUpcomingGames = GetPagedUpcomingGames(),
-    private val getPagedTrendingGames: GetPagedTrendingGames = GetPagedTrendingGames()
+@HiltViewModel
+class RawgGamesViewModel @Inject constructor(
+    private val getGames: GetGames,
+    private val getPagedAllGames: GetPagedAllGames,
+    private val getPagedUpcomingGames: GetPagedUpcomingGames,
+    private val getPagedTrendingGames: GetPagedTrendingGames
 ) : BaseViewModel(), GamesViewModel {
 
     lateinit var pagedGames: LiveData<PagedList<Game>>

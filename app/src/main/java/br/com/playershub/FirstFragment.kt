@@ -8,18 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import br.com.components.GamesViewModel
 import br.com.playershub.databinding.FragmentFirstBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
+@AndroidEntryPoint
 class FirstFragment : Fragment() {
 
     private lateinit var binding: FragmentFirstBinding
 
-    private val rawgGamesViewModel: RawgGamesViewModel by activityViewModels()
+    val rawgGamesViewModel: RawgGamesViewModel by activityViewModels()
 
     override fun onResume() {
         super.onResume()

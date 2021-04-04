@@ -1,10 +1,10 @@
 package br.com.playershub.domain.interactors
 
-import br.com.playershub.data.rawgGamesApi.RawgVideoGameRepository
 import br.com.playershub.domain.boundary.GamesBoundary
+import javax.inject.Inject
 
-class GetPagedTrendingGames(
-    private val repository: GamesBoundary = RawgVideoGameRepository()
+class GetPagedTrendingGames @Inject constructor(
+    private val repository: GamesBoundary
 ) {
     fun invoke() = repository.getPagedTrendingGamesDataSource()
 }

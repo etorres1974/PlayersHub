@@ -5,9 +5,10 @@ import br.com.playershub.data.rawgGamesApi.sources.GenericPagedDataSource
 import br.com.playershub.domain.boundary.GamesBoundary
 import br.com.playershub.domain.entity.Game
 import br.com.playershub.domain.entity.GameDetails
+import javax.inject.Inject
 
-class RawgVideoGameRepository(
-    private val client: RawgGamesClient = RawgGamesClient()
+class RawgVideoGameRepository @Inject constructor(
+    private val client: RawgGamesClient
 ) : GamesBoundary {
 
     override fun getPagedGamesDataSource(): GenericPagedDataSource<Game> {

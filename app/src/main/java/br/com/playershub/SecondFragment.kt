@@ -1,7 +1,6 @@
 package br.com.playershub
 
 import android.os.Bundle
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +11,9 @@ import androidx.navigation.fragment.navArgs
 import br.com.playershub.databinding.FragmentSecondBinding
 import br.com.playershub.domain.entity.GameDetails
 import br.com.util.loadImageUrl
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * A simple [Fragment] subclass as the second destination in the navigation.
- */
+@AndroidEntryPoint
 class SecondFragment : Fragment() {
 
     private lateinit var binding: FragmentSecondBinding
@@ -43,7 +41,10 @@ class SecondFragment : Fragment() {
         with(binding) {
             with(gameDetails) {
                 altImage?.let { imageView.loadImageUrl(it) }
-                description?.let { textViewDescription.text = HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT)  }
+                description?.let {
+                    textViewDescription.text =
+                        HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT)
+                }
 
             }
         }

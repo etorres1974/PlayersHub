@@ -1,23 +1,18 @@
 package br.com.playershub.data.rawgGamesApi.clients
 
 
-import br.com.playershub.data.rawgGamesApi.sources.PagedResponse
 import br.com.playershub.data.rawgGamesApi.entity.Ordering
 import br.com.playershub.data.rawgGamesApi.entity.games.ApiGameDetails
-import br.com.playershub.data.rawgGamesApi.interceptors.RawgGamesApiInterceptor
+import br.com.playershub.data.rawgGamesApi.sources.PagedResponse
 import br.com.playershub.data.rawgGamesApi.sources.RawgGamesApiDataSource
-import br.com.playershub.data.utils.ApiUtilsProvider
-import br.com.playershub.data.utils.VIDEO_GAME_DB_URL
 import br.com.playershub.domain.entity.Game
 import retrofit2.Response
 import java.time.LocalDate
+import javax.inject.Inject
 
-class RawgGamesClient {
-    private val client = ApiUtilsProvider.retrofit(
-        apiBaseUrl = VIDEO_GAME_DB_URL,
-        apiServiceInterface = RawgGamesApiDataSource::class.java,
-        authInterceptor = RawgGamesApiInterceptor()
-    )
+class RawgGamesClient @Inject constructor(
+    private val client: RawgGamesApiDataSource
+) {
 
     suspend fun listPagedGames(page: Int, size: Int): Response<PagedResponse<Game>> {
         return client.listPagedGames(page, size) as Response<PagedResponse<Game>>

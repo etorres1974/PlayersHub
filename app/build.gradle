@@ -1,7 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id "androidx.navigation.safeargs.kotlin"
+    id "dagger.hilt.android.plugin"
 }
 
 android {
@@ -11,6 +13,7 @@ android {
     buildFeatures {
         dataBinding true
     }
+
 
     defaultConfig {
         applicationId rootProject.ext.applicationId
@@ -40,6 +43,8 @@ android {
 dependencies {
     def appcompat_version = "1.2.0"
     def picasso_version = "2.8"
+    def paging_version = "2.1.2"
+
 
     //Default Dependencies
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -54,21 +59,20 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 
-
-
     //AppCompatF
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     //ImageHandling
-    implementation  "com.squareup.picasso:picasso:$picasso_version"
+    implementation "com.squareup.picasso:picasso:$picasso_version"
 
     //Paging
-    def paging_version = "2.1.2"
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version" // For Kotlin use paging-runtime-ktx
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+    // For Kotlin use paging-runtime-ktx
     // alternatively - without Android dependencies for testing
-    testImplementation "androidx.paging:paging-common-ktx:$paging_version" // For Kotlin use paging-common-ktx
+    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
+    // For Kotlin use paging-common-ktx
 
     //Testing
     testImplementation 'junit:junit:4.1.3'
@@ -79,6 +83,14 @@ dependencies {
     testImplementation "io.mockk:mockk:1.10.6"
     testImplementation "org.mockito.kotlin:mockito-kotlin:3.1.0"
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3'
+
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    androidTestAnnotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    testAnnotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"
 
     implementation project(':core')
 }
