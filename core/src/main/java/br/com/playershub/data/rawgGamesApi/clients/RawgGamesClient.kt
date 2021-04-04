@@ -18,7 +18,7 @@ class RawgGamesClient {
         authInterceptor = RawgGamesApiInterceptor()
     )
 
-    suspend fun listPagedGames(page : Int, size : Int): Response<ApiGamesResponse> {
+    suspend fun listPagedGames(page: Int, size: Int): Response<ApiGamesResponse> {
         return client.listPagedGames(page, size)
     }
 
@@ -26,25 +26,25 @@ class RawgGamesClient {
         return client.listGames()
     }
 
-    suspend fun listGamesUpcoming(): Response<ApiGamesResponse> {
+    suspend fun listGamesUpcoming(page: Int, size: Int): Response<ApiGamesResponse> {
         val today = LocalDate.now()
         val nextYear = LocalDate.now().plusYears(1)
         val dates = formatDateRange(today, nextYear)
         val ordering = Ordering.I_ADDED
-        return client.listGamesByDateRange(dates, ordering)
+        return client.listGamesByDateRange(page, size, dates, ordering)
     }
 
-    suspend fun listGamesTrending(): Response<ApiGamesResponse> {
+    suspend fun listGamesTrending(page: Int, size: Int): Response<ApiGamesResponse> {
         val today = LocalDate.now()
         val lastSemester = today.plusMonths(-3)
         val dates = formatDateRange(lastSemester, today)
         val ordering = Ordering.RATING
-        return client.listGamesByDateRange(dates, ordering)
+        return client.listGamesByDateRange(page, size, dates, ordering)
     }
 
     suspend fun detailGame(id: Int): Response<ApiGameDetails> {
         return client.detailGame(id)
     }
 
-    private fun formatDateRange(from : LocalDate, to : LocalDate) =  "$from,$to"
+    private fun formatDateRange(from: LocalDate, to: LocalDate) = "$from,$to"
 }

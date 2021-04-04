@@ -1,28 +1,38 @@
 package br.com.playershub.data.rawgGamesApi
 
-import androidx.paging.DataSource
 import br.com.playershub.data.rawgGamesApi.clients.RawgGamesClient
 import br.com.playershub.domain.boundary.GamesBoundary
 import br.com.playershub.domain.entity.Game
 import br.com.playershub.domain.entity.GameDetails
 
 class RawgVideoGameRepository(
-    private val dataSource: RawgGamesClient = RawgGamesClient()
+    private val client: RawgGamesClient = RawgGamesClient(),
 ) : GamesBoundary {
 
+    private lateinit var  pagedDataSource: GenericPagedDataSource<Game>
+
+    fun listPaged(){
+        pagedDataSource = GenericPagedDataSource<Game>(::listPagedGames)
+    }
+
+    suspend fun listPagedGames(page: Int, size: Int): List<Game>?{
+        return client.listPagedGames(page, size).body()?.results
+    }
+
     override suspend fun listGames(): List<Game>? {
-        return dataSource.listGames().body()?.results
+        return client.listGames().body()?.results
     }
 
     override suspend fun listGamesUpcoming(): List<Game>? {
-        return dataSource.listGamesUpcoming().body()?.results
+        return client.listGamesUpcoming().body()?.results
     }
 
     override suspend fun listGamesTrending(): List<Game>? {
-        return dataSource.listGamesTrending().body()?.results
+        return client.listGamesTrending().body()?.results
+
     }
 
     override suspend fun detailGames(id: Int): GameDetails? {
-        return dataSource.detailGame(id).body()
+        return client.detailGame(id).body()
     }
 }
